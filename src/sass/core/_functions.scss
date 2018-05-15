@@ -1,0 +1,11 @@
+@function tint($color, $amount) {
+  @return mix(rgb(255, 255, 255), $color, $amount);
+}
+
+@function shade($color, $amount) {
+  @return mix(rgb(0, 0, 0), $color, $amount);
+}
+
+@function rem($size) {
+  @return ($size / $default-font-size) + rem;
+}
