@@ -60,4 +60,9 @@ html {
   small {
     color: tint($black, 50%);
   }
+
+  // Media queries
+  @media screen and (max-width: 480px) {
+    width: rem(280px);
+  }
 }
