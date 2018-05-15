@@ -20,7 +20,11 @@ gulp.task("clean", (cb) => {
 gulp.task("html", ["clean"], () => {
   return watch(`${SRC_PATH}/pug/**/*.pug`, { ignoreInitial: false })
     .pipe(plumber())
-    .pipe(pug())
+    .pipe(
+      pug({
+        pretty: true
+      })
+    )
     .pipe(gulp.dest(BUILD_PATH));
 });
 
@@ -29,7 +33,8 @@ gulp.task("css", ["clean"], () => {
     .pipe(plumber())
     .pipe(
       sass({
-        includePaths: [`${SRC_PATH}/sass/core`]
+        includePaths: [`${SRC_PATH}/sass/core`],
+        outputStyle: "expanded"
       })
     )
     .pipe(postcss([autoprefixer]))
