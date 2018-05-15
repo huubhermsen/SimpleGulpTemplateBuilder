@@ -10,7 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/huubhermsen/SimpleGulpTemplateBuilder.git"
   },
-  "keywords": ["Gulp", "Pug", "Sass", "Babel", "Lite", "server"],
+  "keywords": [
+    "Gulp",
+    "Pug",
+    "Sass",
+    "Babel",
+    "Lite",
+    "server"
+  ],
   "author": "Huub Hermsen",
   "license": "MIT",
   "bugs": {
@@ -23,6 +30,7 @@
     "babel-preset-env": "^1.7.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
+    "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.1",

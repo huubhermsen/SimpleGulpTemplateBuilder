@@ -7,6 +7,7 @@ const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const babel = require("gulp-babel");
 const watch = require("gulp-watch");
+const plumber = require("gulp-plumber");
 const { exec } = require("child_process");
 
 const SRC_PATH = path.join(process.cwd(), "src");
@@ -18,19 +19,26 @@ gulp.task("clean", (cb) => {
 
 gulp.task("html", ["clean"], () => {
   return watch(`${SRC_PATH}/pug/**/*.pug`, { ignoreInitial: false })
+    .pipe(plumber())
     .pipe(pug())
     .pipe(gulp.dest(BUILD_PATH));
 });
 
 gulp.task("css", ["clean"], () => {
   return watch(`${SRC_PATH}/sass/**/*.scss`, { ignoreInitial: false })
-    .pipe(sass())
+    .pipe(plumber())
+    .pipe(
+      sass({
+        includePaths: [`${SRC_PATH}/sass/core`]
+      })
+    )
     .pipe(postcss([autoprefixer]))
     .pipe(gulp.dest(`${BUILD_PATH}/assets/css`));
 });
 
 gulp.task("javascript", ["clean"], () => {
   return watch(`${SRC_PATH}/javascript/**/*.js`, { ignoreInitial: false })
+    .pipe(plumber())
     .pipe(
       babel({
         presets: ["env"]
